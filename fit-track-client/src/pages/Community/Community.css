@@ -1,0 +1,381 @@
+.community-container {
+    padding: 2rem;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.page-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 1.5rem 0;
+}
+
+.community-content {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.post-feed {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 350px;
+}
+
+.recent-achievements {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.recent-achievements h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0 0 1rem 0;
+}
+
+.achievement-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.achievement-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+}
+
+.achievement-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #9b87f5;
+    color: white;
+}
+
+.achievement-details {
+    flex: 1;
+}
+
+.achievement-details h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0 0 0.25rem 0;
+}
+
+.achievement-time {
+    font-size: 0.75rem;
+    color: #718096;
+}
+
+.popular-tags {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.popular-tags h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0 0 1rem 0;
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    padding: 0.5rem 1rem;
+    background: #f8f9fa;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    color: #4a5568;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tag:hover {
+    background: #9b87f5;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .community-content {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        max-width: none;
+    }
+}
+
+.post-section {
+    height: auto;
+    min-height: fit-content;
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.post-input-wrapper {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #E5E7EB;
+    flex-shrink: 0;
+}
+
+.input-container {
+    flex: 1;
+    position: relative;
+}
+
+.input-container textarea {
+    width: 100%;
+    min-height: 80px;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    resize: none;
+    outline: none;
+    color: #374151;
+}
+
+.input-container textarea::placeholder {
+    color: #6B7280;
+}
+
+.post-button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.post-button {
+    background: #9B87F5;
+    color: white;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.post-button:hover {
+    background: #8B77E5;
+}
+
+.post-button:disabled {
+    background: #E5E7EB;
+    cursor: not-allowed;
+}
+
+.top-achievers {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.top-achievers h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0 0 1rem 0;
+}
+
+.achievers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.achiever-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.achiever-card:hover {
+    background-color: #f7fafc;
+}
+
+.achiever-rank {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #4a5568;
+    width: 1.5rem;
+}
+
+.achiever-avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+.achiever-avatar.jc {
+    background: #9b87f5;
+}
+
+.achiever-avatar.am {
+    background: #4299e1;
+}
+
+.achiever-avatar.mj {
+    background: #48bb78;
+}
+
+.achiever-info {
+    flex: 1;
+}
+
+.achiever-info h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0 0 0.25rem 0;
+}
+
+.achiever-stats {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: #718096;
+}
+
+.follow-button {
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid #9b87f5;
+}
+
+.follow-button.following {
+    background: #9b87f5;
+    color: white;
+}
+
+.follow-button:not(.following) {
+    background: white;
+    color: #9b87f5;
+}
+
+@media (max-width: 768px) {
+    .community-content {
+        grid-template-columns: 1fr;
+    }
+
+    .community-container {
+        padding: 1rem;
+    }
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.post-user-info {
+    flex: 1;
+}
+
+.post-user-info h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0;
+}
+
+.post-time {
+    font-size: 0.75rem;
+    color: #718096;
+}
+
+.post-content {
+    font-size: 0.875rem;
+    color: #4a5568;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.workout-data {
+    display: flex;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    color: #4a5568;
+}
+
+.post-actions {
+    display: flex;
+    gap: 1rem;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 1rem;
+}
+
+.post-actions button {
+    background: none;
+    border: none;
+    font-size: 0.875rem;
+    color: #718096;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    transition: all 0.2s;
+}
+
+.post-actions button:hover {
+    background: #f8f9fa;
+}

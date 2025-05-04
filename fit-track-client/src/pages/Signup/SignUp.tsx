@@ -323,22 +323,17 @@ const SignUp = () => {
                 email: formData.email,
                 password: formData.password,
                 fullName: formData.fullName,
+                role: "USER",
                 gender: formData.gender,
                 age: parseInt(formData.age),
                 height: parseFloat(formData.height),
                 weight: parseFloat(formData.weight),
-                fitnessLevel: formData.fitnessLevel,
-                primaryGoal: formData.primaryGoal,
-                secondaryGoals: formData.secondaryGoals,
-                workoutsPerWeek: formData.workoutsPerWeek
+                fitnessGoal: formData.primaryGoal,
+                activityLevel: formData.workoutsPerWeek,
+                fitnessLevel: formData.fitnessLevel
             };
 
-            setShowSuccessModal(true);
-            setIsLoading(false);  // Make sure to reset loading state
-
-            // Comment out the actual API call for now
-            /*
-            const response = await fetch('http://localhost:8080/api/auth/signup', {
+            const response = await fetch('http://localhost:8081/api/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -351,12 +346,10 @@ const SignUp = () => {
                 throw new Error(errorData.message || 'Failed to create account');
             }
 
-            const data = await response.json();
-
-            if (data.token) {
-                localStorage.setItem('fittrack_token', data.token);
+            if (response.status === 201) {
+                setShowSuccessModal(true);
+                setIsLoading(false);
             }
-            */
 
         } catch (err) {
             setError(err instanceof Error ? err.message : 'An error occurred during signup');

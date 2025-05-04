@@ -31,30 +31,7 @@ const Login = () => {
         throw new Error("Please fill in all fields");
       }
 
-      // Demo response
-      const demoResponse: LoginResponse = {
-        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.demo.token",
-        user: {
-          id: "123",
-          email: email,
-          fullName: "Demo User",
-          fitnessLevel: "intermediate",
-          primaryGoal: "weightLoss"
-        }
-      };
-
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      // Store token in localStorage
-      localStorage.setItem("fittrack_token", demoResponse.token);
-      localStorage.setItem("fittrack_user", JSON.stringify(demoResponse.user));
-
-      // Redirect to dashboard
-      navigate("/dashboard");
-
-      /* Real API implementation (commented out for now)
-      const response = await fetch("http://localhost:8080/api/auth/login", {
+      const response = await fetch("http://localhost:8081/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -68,10 +45,19 @@ const Login = () => {
       }
 
       const data = await response.json();
-      localStorage.setItem("fittrack_token", data.token);
-      localStorage.setItem("fittrack_user", JSON.stringify(data.user));
+      
+      // Set token in cookies with expiry of 24 hours
+      const expiryDate = new Date();
+      expiryDate.setTime(expiryDate.getTime() + (24 * 60 * 60 * 1000));
+      document.cookie = `fittrack_token=${data.token}; expires=${expiryDate.toUTCString()}; path=/`;
+
+      // Store user data in localStorage if needed
+      if (data.user) {
+        localStorage.setItem("fittrack_user", JSON.stringify(data.user));
+      }
+
+      // Redirect to dashboard
       navigate("/dashboard");
-      */
 
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred during sign in");

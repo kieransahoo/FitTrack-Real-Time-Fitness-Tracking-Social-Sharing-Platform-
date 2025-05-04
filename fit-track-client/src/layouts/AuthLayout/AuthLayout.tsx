@@ -5,7 +5,7 @@ import './AuthLayout.css';
 const AuthLayout = () => {
   return (
     <div className="auth-layout">
-      <Header />
+      {/* <Header /> */}
       <main className="main-content">
         <Outlet />
       </main>
