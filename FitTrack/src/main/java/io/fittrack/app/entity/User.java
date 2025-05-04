@@ -3,9 +3,6 @@ package io.fittrack.app.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
-
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -29,6 +26,8 @@ public class User {
     private String password;
 
     private String role;
+
+    private boolean suspended;
 
     public User() {
     }
@@ -95,6 +94,16 @@ public class User {
     public int hashCode() {
         return Objects.hash(userId, email, fullName);
     }
+
+    public boolean isSuspended() {
+        return suspended;
+    }
+
+    public void setSuspended(boolean suspended) {
+        this.suspended = suspended;
+    }
+
+    
 
 
 }

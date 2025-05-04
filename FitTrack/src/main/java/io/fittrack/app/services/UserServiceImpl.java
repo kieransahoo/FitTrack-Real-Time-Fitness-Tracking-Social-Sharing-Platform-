@@ -6,6 +6,7 @@ import io.fittrack.app.dto.RegisterUserRequest;
 import io.fittrack.app.dto.UserDTO;
 import io.fittrack.app.entity.Customer;
 import io.fittrack.app.entity.User;
+import io.fittrack.app.exception.UserException;
 import io.fittrack.app.jwt.JwtUtil;
 import io.fittrack.app.repository.CustomerRepository;
 import io.fittrack.app.repository.UserRepository;
@@ -20,6 +21,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -110,5 +113,34 @@ public class UserServiceImpl implements UserService {
         }
         logger.info("User not found with email: " + email);
         throw new RuntimeException("User not found with email: " + email);
+    }
+
+    @Override
+    public List<UserDTO> getAllUsers() throws UserException{
+        try {
+            return userRepository.findAll().stream()
+                .map(user -> new UserDTO(user.getUserId(), user.getEmail(), user.getFullName(), user.getRole(), user.isSuspended()))
+                .collect(Collectors.toList());
+        } catch (Exception e) {
+            logger.error("Error getting all users: {}", e.getMessage(), e);
+            throw new UserException("Failed to retrieve users");
+        }
+    }
+
+    @Override
+    public void suspendUser(Integer userId) throws UserException {
+        try {
+            User user = userRepository.findById(userId)
+                    .orElseThrow(() -> new UserException("User not found with ID: " + userId));
+            user.setSuspended(true);
+            userRepository.save(user);
+            logger.info("User with ID {} suspended successfully", userId);
+        } catch (UserException e) {
+            logger.warn("Attempt to suspend non-existent user: {}", e.getMessage());
+            throw e;
+        } catch (Exception e) {
+            logger.error("Error suspending user with ID {}: {}", userId, e.getMessage(), e);
+            throw new UserException("Failed to suspend user"); 
+        }
     }
 }

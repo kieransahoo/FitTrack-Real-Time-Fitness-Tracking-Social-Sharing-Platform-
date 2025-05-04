@@ -70,6 +70,8 @@ mvn spring-boot:run
 ### Admin API
 | Endpoint | Method | Description | Headers | Request Body |
 |----------|--------|-------------|---------|--------------|
+| `/api/admin/users` | GET | List all users | JWT (Admin) | - |
+| `/api/admin/users/{userId}/suspend` | PUT | Suspend a user | JWT (Admin) | - |
 | `/api/admin/challenges` | POST | Create challenge | JWT (Admin) | `{title, description, startDate, endDate, target: INT}` |
 | `/api/admin/challenges` | GET | List all challenges | JWT (Admin) | - |
 

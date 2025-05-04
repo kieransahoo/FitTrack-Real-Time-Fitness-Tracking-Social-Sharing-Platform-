@@ -9,8 +9,21 @@ public class UserDTO {
 
     private String role;
 
+    private boolean suspended;
+
     public Integer getUserId() {
         return userId;
+    }
+
+    public UserDTO() {
+    }
+
+    public UserDTO(Integer userId, String fullName, String email, String role, boolean suspended) {
+        this.userId = userId;
+        this.fullName = fullName;
+        this.email = email;
+        this.role = role;
+        this.suspended = suspended;
     }
 
     public void setUserId(Integer userId) {
@@ -40,4 +53,14 @@ public class UserDTO {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public boolean isSuspended() {
+        return suspended;
+    }
+
+    public void setSuspended(boolean suspended) {
+        this.suspended = suspended;
+    }
+
+    
 }
